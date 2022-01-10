@@ -139,4 +139,11 @@ public class Student
         }
         System.out.print("\n");
     }
+    public Mark GetMarkByNumber(int i)
+    {
+        Mark MarkForTransfer = new Mark();
+        if (i >= 0 && i < 10)
+            MarkForTransfer = mark[i];
+        return MarkForTransfer;
+    }
 }
