@@ -45,4 +45,10 @@ public class Teacher
     {
         System.out.print("ФИО преподавателя: " + Surname + " " + Name + " " + Patronymic + "\n");
     }
+    public void ShowingWorkingWithString()
+    {
+        Surname = Surname + "Демонстрация";
+        Name = Name + "работы со";
+        Patronymic = Patronymic + "строками :)";
+    }
 }
