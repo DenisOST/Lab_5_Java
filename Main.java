@@ -102,7 +102,7 @@ public class Main {
             Groups.AddStudentToGroup(Students[i]);
         }
 
-        
+        /*
         for (i = 0; i < 3; i++)
         {
             Teachers[i].OutputTeacher();
@@ -165,6 +165,24 @@ public class Main {
         TeacherString.Set("", "", "");
         TeacherString.ShowingWorkingWithString();
         TeacherString.OutputTeacher();
+         */
 
+        System.out.println("Модифицировать ваши проекты на С++, C# и Java путем добавления в один из классов как минимум одного статического поля и одного статического метода.");
+        Mark A = new Mark();
+        Mark B = new Mark();
+        Mark C = new Mark();
+        Mark D = new Mark();
+        A.Set(10);
+        B.Set(20);
+        C.Set(30);
+        D.Set(40);
+        Mark.NewList();
+        // Вызов статической компанентной функции:
+        Mark.Reprint();
+        // Включение созданных компанентов в двусвязанный список:
+        A.Add(); B.Add(); C.Add(); D.Add();
+        // Печать в обратном порядке значений элементов списка:
+        Mark.Reprint();
+        System.out.println("\n");
     }
 }
