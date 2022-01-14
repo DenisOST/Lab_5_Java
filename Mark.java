@@ -12,14 +12,22 @@ public class Mark
     {
         Number = 0;
     }
+
+    public Mark(int M)
+    {
+        Number = M;
+    }
+
     public int Get()
     {
         return Number;
     }
+
     public void Set(int M)
     {
         Number = M;
     }
+
     public void InputMark()
     {
         Scanner in = new Scanner(System.in);
@@ -27,13 +35,13 @@ public class Mark
         System.out.print("Введите балл: ");
         Number = in.nextInt();
     }
+
     public void OutputMark()
     {
         System.out.print("Балл: " + Number + "\n");
     }
 
     public static void NewList()
-
     {
         last_mark = null;
     }
