@@ -11,27 +11,52 @@ public class Discipline
         Name = "";
         teacher.Set("", "", "");
     }
-    public String GetDiscipline()
-    {
-        return Name;
-    }
-    public Teacher GetTeacher()
-    {
-        return teacher;
-    }
-    public void Set(String name)
+
+    public Discipline(String name)
     {
         Name = name;
         teacher.Set("", "", "");
     }
+
+    public Discipline(String name, Teacher t)
+    {
+        Name = name;
+        teacher = t;
+    }
+
+    public String GetDiscipline()
+    {
+        return Name;
+    }
+
+    public Teacher GetTeacher()
+    {
+        return teacher;
+    }
+
+    public void Set(String name, Teacher t)
+    {
+        Name = name;
+        teacher = t;
+    }
+    public void SetName(String name)
+    {
+        Name = name;
+    }
+    public void SetTeacher(Teacher t)
+    {
+        teacher = t;
+    }
+
     public void InputDiscipline(Teacher Teacher)
     {
         Scanner in = new Scanner(System.in);
-        this.Set("");
+        this.SetName("");
         System.out.print("Введите название дисциплины: ");
         Name = in.nextLine();
         teacher = Teacher;
     }
+
     public boolean AddTeacherToDiscipline(Teacher Teacher)
     {
         boolean flag = false;
@@ -44,6 +69,7 @@ public class Discipline
 
         return flag;
     }
+
     public void OutputDiscipline()
     {
         System.out.print("Название дисциплины: " + Name + "\n");
