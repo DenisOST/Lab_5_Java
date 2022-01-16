@@ -15,7 +15,9 @@ public class Mark
 
     public Mark(int M)
     {
-        Number = M;
+        Number = 0;
+        if (IsRightMark(M))
+            Number = M;
     }
 
     public int Get()
@@ -25,15 +27,32 @@ public class Mark
 
     public void Set(int M)
     {
-        Number = M;
+        Number = 0;
+        if (IsRightMark(M))
+            Number = M;
     }
 
     public void InputMark()
     {
         Scanner in = new Scanner(System.in);
-        this.Set(0);
-        System.out.print("Введите балл: ");
-        Number = in.nextInt();
+        String str = new String();
+        int number = 0;
+        System.out.print("Введите оценку: ");
+        try // ищем исключения внутри этого блока и отправляем их в соответствующий обработчик catch
+        {
+            if (in.hasNextInt())
+            {
+                number = in.nextInt();
+                str = in.nextLine();
+                Set(number);
+            }
+            else
+                throw new Exception("It string is not number!"); // выбрасывается исключение типа const char*
+        }
+        catch (Exception ex) // обработчик исключений типа const char*
+        {
+            System.out.print("Error: " + ex.getMessage() + '\n');
+        }
     }
 
     public void OutputMark()
@@ -78,6 +97,23 @@ public class Mark
         {
             System.out.println(uk.Number + "\t");
             uk = uk.prev;
+        }
+    }
+
+    public boolean IsRightMark(int mark)
+    {
+        boolean res = true;
+        try // ищем исключения внутри этого блока и отправляем их в соответствующий обработчик catch
+        {
+            if (mark < 0 || mark > 100) // Если пользователь ввел неверное число, то выбрасывается исключение
+                throw new Exception("Incorrect value."); // выбрасывается исключение типа const char*
+            return res;
+        }
+        catch (Exception ex) // обработчик исключений типа const char*
+        {
+            System.out.println("Error: " + ex.getMessage() + '\n');
+            res = false;
+            return res;
         }
     }
 }

@@ -6,6 +6,16 @@ public class Main {
     public static void main(String[] args) {
         int i;
 
+        Mark mark1 = new Mark();
+        System.out.println("Лабораторная работа 10\n");
+        System.out.println("Придумать разумное использование в ваших проектах защищенных блоков (try-блоки), перехватов исключений (catch-блоки) и инициализации исключений (инструкция throw)\n");
+        System.out.println("Введите оценку - число в пределах от 0 до 100!\n");
+        while (mark1.Get() == 0)
+        {
+            mark1.InputMark();
+        }
+        System.out.println("Введенная оценка: " + mark1.Get());
+
         Teacher[] Teachers = new Teacher[3];
 
         for (i = 0; i < 3; i++)
@@ -102,6 +112,7 @@ public class Main {
             Groups.AddStudentToGroup(Students[i]);
         }
 
+        /*
         System.out.println("Лабораторная работа №9:");
         System.out.println("2) Продемонстрировать вызов всех конструкторов");
 
@@ -245,6 +256,6 @@ public class Main {
         // Печать в обратном порядке значений элементов списка:
         Mark.Reprint();
         System.out.println("\n");
-         */
+        */
     }
 }
