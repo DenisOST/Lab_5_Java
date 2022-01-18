@@ -1,19 +1,20 @@
 package com.company;
 import java.util.Scanner;
 
-public class Student
+public class Student extends Person implements Human
 {
-    private String Surname = "";
-    private String Name = "";
-    private String Patronymic = "";
+    //private String Surname = "";
+    //private String Name = "";
+    //private String Patronymic = "";
     private Mark[] mark = new Mark[10];
     private Discipline[] discipline = new Discipline[10];
 
     public Student()
     {
-        Surname = "";
-        Name = "";
-        Patronymic = "";
+        super("", "", "");
+        //Surname = "";
+        //Name = "";
+        //Patronymic = "";
         for (int i = 0; i < 10; i++)
         {
             mark[i] = new Mark();
@@ -27,9 +28,10 @@ public class Student
     }
     public Student(String surname)
     {
-        Surname = surname;
-        Name = "";
-        Patronymic = "";
+        super(surname, "", "");
+        //Surname = surname;
+        //Name = "";
+        //Patronymic = "";
         for (int i = 0; i < 10; i++)
         {
             mark[i] = new Mark();
@@ -43,9 +45,10 @@ public class Student
     }
     public Student(String surname, String name, String patronymic, Mark[] m, int M, Discipline[] d, int D)
     {
-        Surname = surname;
-        Name = name;
-        Patronymic = patronymic;
+        super(surname, name, patronymic);
+        //Surname = surname;
+        //Name = name;
+        //Patronymic = patronymic;
         for (int i = 0; i < 10; i++)
         {
             mark[i] = new Mark();
@@ -146,7 +149,7 @@ public class Student
         }
     }
 
-    public void InputStudent()
+    @Override public void InputFIO()
     {
         Scanner in = new Scanner(System.in);
         this.SetStudent("", "", "");
@@ -199,7 +202,7 @@ public class Student
         return flag;
     }
 
-    public void OutputStudent()
+    @Override public void OutputInformation()
     {
         System.out.print("ФИО студента: " + Surname + " " + Name + " " + Patronymic + "\n");
         System.out.print("Дисциплины: ");
@@ -226,5 +229,10 @@ public class Student
         if (i >= 0 && i < 10)
             MarkForTransfer = mark[i];
         return MarkForTransfer;
+    }
+
+    @Override public String WhoIs()
+    {
+        return "Студент";
     }
 }

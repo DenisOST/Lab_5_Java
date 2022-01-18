@@ -73,6 +73,6 @@ public class Discipline
     public void OutputDiscipline()
     {
         System.out.print("Название дисциплины: " + Name + "\n");
-        teacher.OutputTeacher();
+        teacher.OutputInformation();
     }
 }
