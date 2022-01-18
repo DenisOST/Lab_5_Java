@@ -16,10 +16,43 @@ public class Group
             student[i].SetStudent("", "", "");
         }
     }
+
+    public Group(String name)
+    {
+        Name = name;
+        for (int i = 0; i < 30; i++)
+        {
+            student[i] = new Student();
+            student[i].SetStudent("", "", "");
+        }
+    }
+
+    public Group(String name, Student[] s, int q)
+    {
+        Name = name;
+        Quantity = 0;
+        for (int i = 0; i < 30; i++)
+        {
+            student[i] = new Student();
+            student[i].SetStudent("", "", "");
+        }
+        for (int i = 0; i < 30 && i < q; i++)
+        {
+            student[i] = new Student();
+            student[i].SetStudent("", "", "");
+        }
+        for (int i = 0; i < 30 && i < q; i++)
+        {
+            student[i] = s[i];
+            Quantity++;
+        }
+    }
+
     public String GetName()
     {
         return Name;
     }
+
     public Student GetStudent(int Num)
     {
         Student s = new Student();
@@ -28,19 +61,34 @@ public class Group
 
         return s;
     }
+
     public int GetQuantity()
     {
         return Quantity;
     }
+
+    public void Set(String name, Student[] s, int q)
+    {
+        Name = name;
+        for (int i = 0; i < 30 && i < q; i++)
+        {
+            student[i] = s[i];
+            Quantity++;
+        }
+    }
     public void SetGroup(String name)
     {
         Name = name;
+    }
+    public void SetStudent(Student[] s)
+    {
         for (int i = 0; i < 30; i++)
         {
-            student[i].SetStudent("", "", "");
+            student[i] = s[i];
+            Quantity++;
         }
-        Quantity = 0;
     }
+
     public void InputGroup()
     {
         Scanner in = new Scanner(System.in);
@@ -48,6 +96,7 @@ public class Group
         System.out.print("Введите название группы: ");
         Name = in.nextLine();
     }
+
     public boolean AddStudentToGroup(Student Student)
     {
         boolean flag = false;
@@ -70,6 +119,7 @@ public class Group
 
         return flag;
     }
+
     public void OutputGroup()
     {
         System.out.print("Название группы: " + Name + "\n");
@@ -81,6 +131,7 @@ public class Group
             i++;
         }
     }
+
     public int AverageMarkStudent()
     {
         Scanner in = new Scanner(System.in);

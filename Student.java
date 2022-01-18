@@ -1,19 +1,20 @@
 package com.company;
 import java.util.Scanner;
 
-public class Student
+public class Student extends Person implements Human
 {
-    private String Surname = "";
-    private String Name = "";
-    private String Patronymic = "";
+    //private String Surname = "";
+    //private String Name = "";
+    //private String Patronymic = "";
     private Mark[] mark = new Mark[10];
     private Discipline[] discipline = new Discipline[10];
 
     public Student()
     {
-        Surname = "";
-        Name = "";
-        Patronymic = "";
+        super("", "", "");
+        //Surname = "";
+        //Name = "";
+        //Patronymic = "";
         for (int i = 0; i < 10; i++)
         {
             mark[i] = new Mark();
@@ -22,21 +23,67 @@ public class Student
         for (int i = 0; i < 10; i++)
         {
             discipline[i] = new Discipline();
-            discipline[i].Set("");
+            discipline[i].SetName("");
         }
     }
+    public Student(String surname)
+    {
+        super(surname, "", "");
+        //Surname = surname;
+        //Name = "";
+        //Patronymic = "";
+        for (int i = 0; i < 10; i++)
+        {
+            mark[i] = new Mark();
+            mark[i].Set(0);
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            discipline[i] = new Discipline();
+            discipline[i].SetName("");
+        }
+    }
+    public Student(String surname, String name, String patronymic, Mark[] m, int M, Discipline[] d, int D)
+    {
+        super(surname, name, patronymic);
+        //Surname = surname;
+        //Name = name;
+        //Patronymic = patronymic;
+        for (int i = 0; i < 10; i++)
+        {
+            mark[i] = new Mark();
+            mark[i].Set(0);
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            discipline[i] = new Discipline();
+            discipline[i].SetName("");
+        }
+        for (int i = 0; i < 10 && i < M; i++)
+        {
+            mark[i] = m[i];
+        }
+        for (int i = 0; i < 10 && i < D; i++)
+        {
+            discipline[i] = d[i];
+        }
+    }
+
     public String GetSurname()
     {
         return Surname;
     }
+
     public String GetName()
     {
         return Name;
     }
+
     public String GetPatronymic()
     {
         return Patronymic;
     }
+
     public Mark GetMark(int Num)
     {
         Mark m = new Mark();
@@ -45,6 +92,7 @@ public class Student
 
         return m;
     }
+
     public Discipline GetDiscipline(int Num)
     {
         Discipline d = new Discipline();
@@ -53,6 +101,7 @@ public class Student
 
         return d;
     }
+
     public void SetStudent(String surname, String name, String patronymic)
     {
         Surname = surname;
@@ -66,10 +115,41 @@ public class Student
 
         for (int i = 0; i < 10; i++)
         {
-            discipline[i].Set("");
+            discipline[i].SetName("");
         }
     }
-    public void InputStudent()
+    public void SetSurname(String surname)
+    {
+        Surname = surname;
+    }
+
+    public void SetName(String name)
+    {
+        Name = name;
+    }
+
+    public void SetPatronymic(String patronymic)
+    {
+        Patronymic = patronymic;
+    }
+
+    public void SetMark(Mark[] m)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            mark[i] = m[i];
+        }
+    }
+
+    public void SetDiscipline(Discipline[] d)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            discipline[i] = d[i];
+        }
+    }
+
+    @Override public void InputFIO()
     {
         Scanner in = new Scanner(System.in);
         this.SetStudent("", "", "");
@@ -80,6 +160,7 @@ public class Student
         System.out.print("Введите отчество студента: ");
         Patronymic = in.nextLine();
     }
+
     public boolean AddDisciplineToStudent(Discipline Discipline)
     {
         boolean flag = false;
@@ -95,6 +176,7 @@ public class Student
 
         return flag;
     }
+
     public boolean AddMarkToStudent(Discipline Discipline, Mark Mark)
     {
         boolean flag = false;
@@ -119,7 +201,8 @@ public class Student
 
         return flag;
     }
-    public void OutputStudent()
+
+    @Override public void OutputInformation()
     {
         System.out.print("ФИО студента: " + Surname + " " + Name + " " + Patronymic + "\n");
         System.out.print("Дисциплины: ");
@@ -138,5 +221,18 @@ public class Student
             i++;
         }
         System.out.print("\n");
+    }
+
+    public Mark GetMarkByNumber(int i)
+    {
+        Mark MarkForTransfer = new Mark();
+        if (i >= 0 && i < 10)
+            MarkForTransfer = mark[i];
+        return MarkForTransfer;
+    }
+
+    @Override public String WhoIs()
+    {
+        return "Студент";
     }
 }
